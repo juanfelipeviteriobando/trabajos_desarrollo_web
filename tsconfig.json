@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2016",   // Cambiar el objetivo a ES2016 o posterior
+    
+
+    "outDir": "./public/scripts",
+    "target": "ES6",//Js version to copilate
+    "module": "CommonJS",
+    "strict":true,
+
     "lib": ["es2016", "dom"], // Asegurarse de que las bibliotecas de ES2016 estén disponibles
-    "strict": true         // Habilitar el modo estricto de TypeScript
+
   }
 }
