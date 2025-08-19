@@ -33,21 +33,36 @@
     }
 
     #result {
-      margin-top: 30px;
+      margin-top: 20px;
       font-size: 22px;
       font-weight: bold;
     }
 
+    /* Contenedor Jugador vs Máquina */
     .versus-container {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 25px;
-      font-size: 40px;
+      font-size: 28px;
+      font-weight: bold;
     }
 
     .player, .computer {
       flex: 1;
+      text-align: center;
+    }
+
+    .jugada {
+      font-size: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .jugada span {
+      font-size: 20px;
+      margin-top: 5px;
     }
 
     .vs {
@@ -78,12 +93,26 @@
 <body>
   <h1>✊📄✂️🦎🖖 Piedra, Papel, Tijera, Lagarto, Spock</h1>
 
+  <!-- Botones -->
   <div>
     <button class="button" onclick="jugar('piedra')">✊ Piedra</button>
     <button class="button" onclick="jugar('papel')">📄 Papel</button>
     <button class="button" onclick="jugar('tijera')">✂️ Tijera</button>
     <button class="button" onclick="jugar('lagarto')">🦎 Lagarto</button>
     <button class="button" onclick="jugar('spock')">🖖 Spock</button>
+  </div>
+
+  <!-- Jugador vs Máquina -->
+  <div class="versus-container">
+    <div class="player jugada" id="eleccion-jugador">
+      👤
+      <span>Jugador</span>
+    </div>
+    <div class="vs">VS</div>
+    <div class="computer jugada" id="eleccion-maquina">
+      🤖
+      <span>Máquina</span>
+    </div>
   </div>
 
   <!-- Resultado dinámico -->

@@ -34,7 +34,7 @@ function jugar(usuario: Jugada): void {
 function obtenerJugadaAleatoria(): Jugada {
     const opciones: Jugada[] = ['piedra', 'papel', 'tijera', 'lagarto', 'spock'];
     const indiceAleatorio = Math.floor(Math.random() * opciones.length);
-    return opciones[indiceAleatorio];
+    return opciones[indiceAleatorio]; 
 }
 
 // Función que compara las jugadas del usuario y la computadora
@@ -51,15 +51,36 @@ function compararJugada(usuario: Jugada, computadora: Jugada): string {
     }
 }
 
-// Función que muestra el resultado en la interfaz
+// Mapa de jugadas con sus emojis
+const emojis: Record<Jugada, string> = {
+  piedra: "✊",
+  papel: "📄",
+  tijera: "✂️",
+  lagarto: "🦎",
+  spock: "🖖"
+};
+
 function mostrarResultado(usuario: Jugada, computadora: Jugada, resultado: string): void {
     const resultElement = document.getElementById('result')!;
-    resultElement.innerHTML = `
-        <p>Tú elegiste: <strong>${usuario}</strong></p>
-        <p>La computadora eligió: <strong>${computadora}</strong></p>
-        <p><strong>${resultado}</strong></p>
+    const jugadorElement = document.getElementById('eleccion-jugador')!;
+    const maquinaElement = document.getElementById('eleccion-maquina')!;
+
+    // Mostrar la jugada del jugador con emoji y texto
+    jugadorElement.innerHTML = `
+        ${emojis[usuario]}
+        <span>${usuario}</span>
     `;
+
+    // Mostrar la jugada de la máquina con emoji y texto
+    maquinaElement.innerHTML = `
+        ${emojis[computadora]}
+        <span>${computadora}</span>
+    `;
+
+    // Mostrar solo el resultado abajo
+    resultElement.innerHTML = `<p><strong>${resultado}</strong></p>`;
 }
+
 
 // Función que actualiza el score
 function actualizarScore(resultado: string): void {
