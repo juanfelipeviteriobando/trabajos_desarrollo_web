@@ -10,8 +10,13 @@ const reglas: { [key in Jugada]: Jugada[] } = {
     spock: ['piedra', 'tijera']
 };
 
+// Variables para llevar el score
+let victoriasJugador = 0;
+let victoriasMaquina = 0;
+let empates = 0;
+
 // Función principal para manejar las jugadas
-function jugada(usuario: Jugada): void {
+function jugar(usuario: Jugada): void {
     // Generar una jugada aleatoria para la computadora
     const computadora = obtenerJugadaAleatoria();
     
@@ -20,6 +25,9 @@ function jugada(usuario: Jugada): void {
     
     // Mostrar el resultado en la interfaz
     mostrarResultado(usuario, computadora, resultado);
+    
+    // Actualizar el score
+    actualizarScore(resultado);
 }
 
 // Función que obtiene una jugada aleatoria para la computadora
@@ -43,16 +51,31 @@ function compararJugada(usuario: Jugada, computadora: Jugada): string {
     }
 }
 
-// Función que muestra el resultado en la interfaz (usamos el DOM)
+// Función que muestra el resultado en la interfaz
 function mostrarResultado(usuario: Jugada, computadora: Jugada, resultado: string): void {
     const resultElement = document.getElementById('result')!;
     resultElement.innerHTML = `
         <p>Tú elegiste: <strong>${usuario}</strong></p>
         <p>La computadora eligió: <strong>${computadora}</strong></p>
         <p><strong>${resultado}</strong></p>
-    `;  
+    `;
 }
 
-// Exponer la función jugada para que se pueda llamar desde el HTML
-// Esto es necesario para interactuar con los botones en el HTML
-(window as any).jugada = jugada;
+// Función que actualiza el score
+function actualizarScore(resultado: string): void {
+    if (resultado === "¡Ganaste!") {
+        victoriasJugador++;
+    } else if (resultado === "¡Perdiste!") {
+        victoriasMaquina++;
+    } else {
+        empates++;
+    }
+
+    // Actualizar los valores en la página
+    document.getElementById('victorias-jugador')!.textContent = victoriasJugador.toString();
+    document.getElementById('victorias-maquina')!.textContent = victoriasMaquina.toString();
+    document.getElementById('empates')!.textContent = empates.toString();
+}
+
+// Exponer la función jugar para que se pueda llamar desde el HTML
+(window as any).jugar = jugar;

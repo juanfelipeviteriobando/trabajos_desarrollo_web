@@ -2,12 +2,14 @@
   "compilerOptions": {
     
 
-    "outDir": "./public/scripts",
+    "outDir": "./scripts",
+    "rootDir": "./src",
     "target": "ES6",//Js version to copilate
     "module": "CommonJS",
     "strict":true,
-
-    "lib": ["es2016", "dom"], // Asegurarse de que las bibliotecas de ES2016 estén disponibles
-
-  }
+    "esModuleInterop": true   // Para compatibilidad con importaciones de módulos ES
+  },
+  "include": [
+    "src/**/*.ts"  // Incluimos todos los archivos .ts dentro de la carpeta 'src'
+  ]
 }
