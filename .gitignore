@@ -1,0 +1,10 @@
+# Ignorar los compilados de TypeScript
+public/scripts/
+*.js
+*.js.map
+
+# Ignorar dependencias
+node_modules/
+
+# Opcional: archivos de logs, builds temporales, etc.
+*.log
