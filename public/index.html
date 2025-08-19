@@ -10,11 +10,23 @@
       text-align: center;
       padding: 20px;
       background: linear-gradient(135deg, #ece9e6, #ffffff);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
       color: #333;
       margin-bottom: 20px;
+      animation: bounce 1.5s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-8px); }
     }
 
     .button {
@@ -25,17 +37,25 @@
       border-radius: 8px;
       border: 2px solid #444;
       background-color: #f4f4f4;
-      transition: 0.2s;
+      transition: transform 0.2s, background-color 0.3s;
     }
 
     .button:hover {
       background-color: #ddd;
+      transform: scale(1.1);
     }
 
     #result {
       margin-top: 20px;
       font-size: 22px;
       font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out, transform 0.4s ease-in-out;
+    }
+
+    #result.show {
+      opacity: 1;
+      transform: scale(1.05);
     }
 
     /* Contenedor Jugador vs Máquina */
@@ -51,6 +71,7 @@
     .player, .computer {
       flex: 1;
       text-align: center;
+      transition: transform 0.5s ease-in-out;
     }
 
     .jugada {
@@ -58,11 +79,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      animation: fadeInScale 0.6s ease-in-out;
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .jugada span {
       font-size: 20px;
       margin-top: 5px;
+      animation: fadeIn 0.8s ease-in-out;
     }
 
     .vs {
@@ -70,28 +98,56 @@
       font-size: 36px;
       font-weight: bold;
       color: #e63946;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     #score {
       margin-top: 40px;
       font-size: 20px;
+      opacity: 0;
+      animation: fadeIn 1.2s ease-in-out forwards;
+      animation-delay: 0.8s;
     }
 
     .winner {
       color: green;
+      animation: flashWin 1s ease-in-out;
     }
 
     .loser {
       color: red;
+      animation: flashLose 1s ease-in-out;
     }
 
     .draw {
       color: gray;
+      animation: flashDraw 1s ease-in-out;
+    }
+
+    @keyframes flashWin {
+      0% { color: #fff; background: green; padding: 5px; border-radius: 6px; }
+      100% { color: green; background: transparent; }
+    }
+
+    @keyframes flashLose {
+      0% { color: #fff; background: red; padding: 5px; border-radius: 6px; }
+      100% { color: red; background: transparent; }
+    }
+
+    @keyframes flashDraw {
+      0% { color: #fff; background: gray; padding: 5px; border-radius: 6px; }
+      100% { color: gray; background: transparent; }
     }
   </style>
 </head>
 <body>
-  <h1>✊📄✂️🦎🖖 Piedra, Papel, Tijera, Lagarto, Spock</h1>
+  <h1>✊Piedra, 📄Papel, Tijera✂️, Lagarto🦎, Spock🖖</h1>
 
   <!-- Botones -->
   <div>
@@ -126,5 +182,15 @@
   </div>
 
   <script src="scripts/juego.js"></script>
+  <script>
+    // 👇 Esto solo agrega animación al mostrar el resultado (sin tocar tu lógica TS)
+    const resultElement = document.getElementById("result");
+    const observer = new MutationObserver(() => {
+      resultElement?.classList.remove("show");
+      void resultElement?.offsetWidth; // truco para reiniciar animación
+      resultElement?.classList.add("show");
+    });
+    observer.observe(resultElement, { childList: true });
+  </script>
 </body>
 </html>
