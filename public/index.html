@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piedra papel tijera lagarto spock</title>
-    <h1>
+    <title>Piedra, Papel, Tijera, Lagarto, Spock</title>
+   
         
-    </h1>
 </head>
 <body>
+
+    <h1>Piedra, Papel, Tijera, Lagarto, Spock</h1>
+    <div class="game-container">
+        <div class="button-container">
+            <button onclick="jugada('piedra')">Piedra</button>
+            <button onclick="jugada('papel')">Papel</button>
+            <button onclick="jugada('tijera')">Tijera</button>
+            <button onclick="jugada('lagarto')">Lagarto</button>
+            <button onclick="jugada('spock')">Spock</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="juego.js"></script>
     
 </body>
 </html>
