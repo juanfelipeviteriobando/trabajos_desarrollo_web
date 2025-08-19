@@ -1,52 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego Máquina vs Persona</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .button {
-            margin: 10px;
-            padding: 15px;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 8px;
-            border: 2px solid #333;
-        }
-        #resultado {
-            margin-top: 20px;
-            font-size: 20px;
-        }
-        #score {
-            margin-top: 30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piedra, Papel, Tijera, Lagarto, Spock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      margin: 10px;
+      padding: 15px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: 2px solid #444;
+      background-color: #f4f4f4;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background-color: #ddd;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .versus-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+      font-size: 40px;
+    }
+
+    .player, .computer {
+      flex: 1;
+    }
+
+    .vs {
+      margin: 0 20px;
+      font-size: 36px;
+      font-weight: bold;
+      color: #e63946;
+    }
+
+    #score {
+      margin-top: 40px;
+      font-size: 20px;
+    }
+
+    .winner {
+      color: green;
+    }
+
+    .loser {
+      color: red;
+    }
+
+    .draw {
+      color: gray;
+    }
+  </style>
 </head>
 <body>
-    <h1>Juego Máquina vs Persona</h1>
+  <h1>✊📄✂️🦎🖖 Piedra, Papel, Tijera, Lagarto, Spock</h1>
 
-    <div>
-        <button class="button" onclick="jugar('piedra')">Piedra</button>
-        <button class="button" onclick="jugar('papel')">Papel</button>
-        <button class="button" onclick="jugar('tijera')">Tijera</button>
-        <button class="button" onclick="jugar('lagarto')">Lagarto</button>
-        <button class="button" onclick="jugar('spock')">Spock</button>
-    </div>
+  <div>
+    <button class="button" onclick="jugar('piedra')">✊ Piedra</button>
+    <button class="button" onclick="jugar('papel')">📄 Papel</button>
+    <button class="button" onclick="jugar('tijera')">✂️ Tijera</button>
+    <button class="button" onclick="jugar('lagarto')">🦎 Lagarto</button>
+    <button class="button" onclick="jugar('spock')">🖖 Spock</button>
+  </div>
 
-    <!-- Este es el contenedor donde se va a mostrar el resultado -->
-    <div id="result"></div>
+  <!-- Resultado dinámico -->
+  <div id="result"></div>
 
-    <div id="score">
-        <p>Victorias del Jugador: <span id="victorias-jugador">0</span></p>
-        <p>Victorias de la Máquina: <span id="victorias-maquina">0</span></p>
-        <p>Empates: <span id="empates">0</span></p>
-    </div>
+  <!-- Marcador -->
+  <div id="score">
+    <p>👤 Victorias del Jugador: <span id="victorias-jugador">0</span></p>
+    <p>🤖 Victorias de la Máquina: <span id="victorias-maquina">0</span></p>
+    <p>➖ Empates: <span id="empates">0</span></p>
+  </div>
 
-    <script src="scripts/juego.js"></script>
+  <script src="scripts/juego.js"></script>
 </body>
 </html>
