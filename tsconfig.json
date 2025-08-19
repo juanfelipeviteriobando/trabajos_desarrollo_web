@@ -2,7 +2,7 @@
   "compilerOptions": {
     
 
-    "outDir": "./scripts",
+    "outDir": "public/scripts",
     "rootDir": "./src",
     "target": "ES6",//Js version to copilate
     "module": "CommonJS",

@@ -1,5 +1,6 @@
+"use strict";
 // Regla del juego: qué gana a qué
-var reglas = {
+const reglas = {
     piedra: ['tijera', 'lagarto'],
     papel: ['piedra', 'spock'],
     tijera: ['papel', 'lagarto'],
@@ -7,15 +8,15 @@ var reglas = {
     spock: ['piedra', 'tijera']
 };
 // Variables para llevar el score
-var victoriasJugador = 0;
-var victoriasMaquina = 0;
-var empates = 0;
+let victoriasJugador = 0;
+let victoriasMaquina = 0;
+let empates = 0;
 // Función principal para manejar las jugadas
 function jugar(usuario) {
     // Generar una jugada aleatoria para la computadora
-    var computadora = obtenerJugadaAleatoria();
+    const computadora = obtenerJugadaAleatoria();
     // Comparar las jugadas y obtener el resultado
-    var resultado = compararJugada(usuario, computadora);
+    const resultado = compararJugada(usuario, computadora);
     // Mostrar el resultado en la interfaz
     mostrarResultado(usuario, computadora, resultado);
     // Actualizar el score
@@ -23,8 +24,8 @@ function jugar(usuario) {
 }
 // Función que obtiene una jugada aleatoria para la computadora
 function obtenerJugadaAleatoria() {
-    var opciones = ['piedra', 'papel', 'tijera', 'lagarto', 'spock'];
-    var indiceAleatorio = Math.floor(Math.random() * opciones.length);
+    const opciones = ['piedra', 'papel', 'tijera', 'lagarto', 'spock'];
+    const indiceAleatorio = Math.floor(Math.random() * opciones.length);
     return opciones[indiceAleatorio];
 }
 // Función que compara las jugadas del usuario y la computadora
@@ -42,8 +43,12 @@ function compararJugada(usuario, computadora) {
 }
 // Función que muestra el resultado en la interfaz
 function mostrarResultado(usuario, computadora, resultado) {
-    var resultElement = document.getElementById('result');
-    resultElement.innerHTML = "\n        <p>T\u00FA elegiste: <strong>".concat(usuario, "</strong></p>\n        <p>La computadora eligi\u00F3: <strong>").concat(computadora, "</strong></p>\n        <p><strong>").concat(resultado, "</strong></p>\n    ");
+    const resultElement = document.getElementById('result');
+    resultElement.innerHTML = `
+        <p>Tú elegiste: <strong>${usuario}</strong></p>
+        <p>La computadora eligió: <strong>${computadora}</strong></p>
+        <p><strong>${resultado}</strong></p>
+    `;
 }
 // Función que actualiza el score
 function actualizarScore(resultado) {

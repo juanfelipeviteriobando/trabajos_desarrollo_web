@@ -68,7 +68,7 @@ function actualizarScore(resultado: string): void {
     } else if (resultado === "¡Perdiste!") {
         victoriasMaquina++;
     } else {
-        empates++;
+        empates++;   
     }
 
     // Actualizar los valores en la página
